@@ -9,9 +9,16 @@ q1 sum current_num =
                 else q1 sum (current_num + 1)
         else sum
 
+q2 sum prev_num current_num = 
+    if current_num < 4000000
+        then 
+            if mod current_num 2 == 0
+                then q2 (sum + current_num) current_num (current_num + prev_num)
+                else q2 sum current_num (current_num + prev_num)
+        else sum
 
 main = do 
     let result = q1 0 3
     print result
-    let result2 = q1 0 3
+    let result2 = q2 0 1 2
     print result2
