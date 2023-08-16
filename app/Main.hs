@@ -32,17 +32,13 @@ check_palindrome_number number =
     in numberAsString == reverse numberAsString
 
 
-q4 current_num_1 current_num_2 current_product =
-    if current_num_2 >= 1000
-        then q4 (current_num_1 + 1) 1 current_product
-    else
-        if current_num_1 >= 1000
-            then current_product
-        else 
-            let result_product = current_num_1 * current_num_2 in
-            if check_palindrome_number result_product && result_product > current_product
-                then q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
-            else q4 current_num_1 (current_num_2 + 1) (current_product)
+
+q4 current_num_1 current_num_2 current_product
+    | current_num_2 >= 1000 = q4 (current_num_1 + 1) 1 current_product
+    | current_num_1 >= 1000 = current_product
+    | not (check_palindrome_number result_product) || result_product <= current_product = q4 current_num_1 (current_num_2 + 1) (current_product)
+    | otherwise = q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
+    where result_product = current_num_1 * current_num_2
 
 q5 input_number divisor = 
     if divisor > 20
