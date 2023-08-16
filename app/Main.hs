@@ -40,7 +40,7 @@ q4 current_num_1 current_num_2 current_product
 
 q5 input_number
     | length [x | x <- divisors,mod input_number x == 0] == length divisors = input_number
-    | otherwise = q5 (input_number + 380)
+    | otherwise = q5 (input_number + 20)
     where divisors = [11..20]
 
 q6 = (sum [1..100]) ** 2 - sum [x ** 2 | x <- [1..100]]
