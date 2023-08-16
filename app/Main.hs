@@ -45,6 +45,12 @@ q5 input_number divisor
 
 q6 = (sum [1..100]) ** 2 - sum [x ** 2 | x <- [1..100]]
 
+q7 current_num nth_prime
+    | current_num < 2 || length [x | x <- [2..limit], mod current_num x == 0] /= 0 = q7 (current_num + 1) nth_prime
+    | nth_prime /= 10001 = q7 (current_num + 1) (nth_prime + 1)
+    | otherwise = current_num
+    where limit = floor (sqrt (fromIntegral current_num))
+
 main = do 
     let result = q1 0 3
     print result
@@ -58,3 +64,5 @@ main = do
     print result5
     let result6 = q6 
     print result6
+    let result7 = q7 0 1
+    print result7
