@@ -38,10 +38,10 @@ q4 current_num_1 current_num_2 current_product
     | otherwise = q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
     where result_product = current_num_1 * current_num_2
 
-q5 input_number divisor 
-    | divisor > 20 = input_number
-    | mod input_number divisor == 0 = q5 input_number (divisor + 1)
-    | otherwise = q5 (input_number + 20) 2
+q5 input_number
+    | length [x | x <- divisors,mod input_number x == 0] == length divisors = input_number
+    | otherwise = q5 (input_number + 20)
+    where divisors = [11..20]
 
 q6 = (sum [1..100]) ** 2 - sum [x ** 2 | x <- [1..100]]
 
@@ -60,7 +60,7 @@ main = do
     print result3
     let result4 = q4 1 1 0
     print result4
-    let result5 = q5 20 2
+    let result5 = q5 20
     print result5
     let result6 = q6 
     print result6
