@@ -17,8 +17,6 @@ q2 sum prev_num current_num =
         else q2 sum current_num (current_num + prev_num)
     else sum
 
-
-
 q3 checked_number current_divisor  = 
     if current_divisor >= checked_number
         then checked_number
