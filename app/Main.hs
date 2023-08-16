@@ -43,7 +43,7 @@ q5 input_number divisor
     | mod input_number divisor == 0 = q5 input_number (divisor + 1)
     | otherwise = q5 (input_number + 20) 2
 
-q6 = (sum [1..100]) ** 2 - sum [x_squared | x <- [1..100], let x_squared = x ** 2]
+q6 = (sum [1..100]) ** 2 - sum [x ** 2 | x <- [1..100]]
 
 main = do 
     let result = q1 0 3
