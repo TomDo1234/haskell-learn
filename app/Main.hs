@@ -44,6 +44,14 @@ q4 current_num_1 current_num_2 current_product =
                 then q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
             else q4 current_num_1 (current_num_2 + 1) (current_product)
 
+q5 input_number divisor = 
+    if divisor > 20
+        then input_number
+    else 
+        if mod input_number divisor == 0
+            then q5 input_number (divisor + 1)
+        else 
+            q5 (input_number + 20) 2
 
 main = do 
     let result = q1 0 3
@@ -54,3 +62,5 @@ main = do
     print result3
     let result4 = q4 1 1 0
     print result4
+    let result5 = q5 20 2
+    print result5
