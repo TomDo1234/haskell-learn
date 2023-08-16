@@ -27,6 +27,23 @@ q3 checked_number current_divisor  =
                 then q3 (div checked_number current_divisor) (current_divisor)
                 else q3 checked_number (current_divisor + 1)
 
+check_palindrome_number number = 
+    let numberAsString = show number
+    in numberAsString == reverse numberAsString
+
+
+q4 current_num_1 current_num_2 current_product =
+    if current_num_2 >= 1000
+        then q4 (current_num_1 + 1) 1 current_product
+        else
+            if current_num_1 >= 1000
+                then current_product
+                else 
+                    if check_palindrome_number (current_num_1 * current_num_2) && current_num_1 * current_num_2 > current_product
+                        then q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
+                        else q4 current_num_1 (current_num_2 + 1) (current_product)
+
+
 main = do 
     let result = q1 0 3
     print result
@@ -34,3 +51,5 @@ main = do
     print result2
     let result3 = q3 600851475143 2 
     print result3
+    let result4 = q4 1 1 0
+    print result4
