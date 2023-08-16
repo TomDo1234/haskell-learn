@@ -35,13 +35,13 @@ check_palindrome_number number =
 q4 current_num_1 current_num_2 current_product =
     if current_num_2 >= 1000
         then q4 (current_num_1 + 1) 1 current_product
-        else
-            if current_num_1 >= 1000
-                then current_product
-                else 
-                    if check_palindrome_number (current_num_1 * current_num_2) && current_num_1 * current_num_2 > current_product
-                        then q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
-                        else q4 current_num_1 (current_num_2 + 1) (current_product)
+    else
+        if current_num_1 >= 1000
+            then current_product
+        else 
+            if check_palindrome_number (current_num_1 * current_num_2) && current_num_1 * current_num_2 > current_product
+                then q4 current_num_1 (current_num_2 + 1) (current_num_1 * current_num_2)
+            else q4 current_num_1 (current_num_2 + 1) (current_product)
 
 
 main = do 
